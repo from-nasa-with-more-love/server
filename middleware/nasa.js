@@ -6,8 +6,12 @@ const axios = _axios.create({
 module.exports = {
   getApod(req, res, next) {
     const { date } = req.body;
+    if (new Date(date) > new Date()) {
+      return res.status(400).json({ status: 400, message: 'error at nasa: you come from the future' });
+    }
     axios
-      .get(`/planetary/apod?api_key=${process.env.NASA_APIKEY}&start_date=${date}&end_date=${date}`)
+      .get(`/
+      /apod?api_key=${process.env.NASA_APIKEY}&start_date=${date}&end_date=${date}`)
       .then(({ data }) => {
         req.nasaData = data[0];
         req.nasaData.tags = [];
