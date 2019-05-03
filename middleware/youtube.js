@@ -16,7 +16,7 @@ module.exports = {
     const splited = url.split('/');
     const video_id = splited[splited.length - 1].split('?')[0];
     axios
-      .get(`/youtube/v3/videos?part=snippet%2CcontentDetails%2Cstatistics&id=${video_id}&key=${process.env.YOUTUBE_APIKEY}`)
+      .get(`/youtube/v3/videos?part=snippet&id=${video_id}&key=${process.env.YOUTUBE_APIKEY}`)
       .then(({ data }) => {
         req.nasaData.tags = data.items[0].snippet.tags;
         req.nasaData.special = url;
