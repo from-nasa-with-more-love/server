@@ -6,7 +6,7 @@ const Translate = require('../middleware/translate');
 const Youtube = require('../middleware/youtube');
 
 
-router.get('/', Nasa.getApod, Youtube.getThumbnail, Vision.getTags, Translate.getLangs);
+router.post('/', Nasa.getApod, Youtube.getThumbnail, Vision.getTags, Translate.getLangs);
 
 
 module.exports = router;
